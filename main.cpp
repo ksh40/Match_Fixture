@@ -4,6 +4,23 @@
 #include <vector>
 #include <string>
 using namespace std;
+/ Structure for the teams info
+struct Team {
+    string name;
+    string town;
+    string stadium;
+    Team(const string& name, const string& town,const string& stadium): name(name), town(town), stadium(stadium) {}
+};
+
+// Structure for the match info
+struct Match {
+    string homeTeam;
+    string awayTeam;
+    string localTown;
+    string stadium;
+    int leg;
+    int weekend;
+};
 
 // To enable it to access and view the teams info
 vector<Team> readCSV(const string& filename) {
