@@ -31,6 +31,22 @@ void generateFixture(const vector<Team>& teams, vector<Match>& fixtures) {
             rivals.weekend=weekend++;
             fixtures.push_back(rivals);
         }
+   // To display the fixtures after being generated which is then saved to the fixtures file
+void displayFixtures(const vector<Match>& fixtures, const string& outputFilename) {
+    ofstream outfile(outputFilename);
+    if (!outfile.is_open()) {
+        cout << "File not found" << endl;
+        return;
+    }
+    for (const auto& fixture : fixtures) {
+        string output="| Weekend: " +to_string(fixture.weekend)+ " | Match: " +fixture.homeTeam + " vs " + fixture.awayTeam+ " at " + fixture.stadium + ", " + fixture.localTown+" (Leg " +to_string (fixture.leg) +")\n";
+        cout<<output;
+        outfile<<output;
+    }
+
+    cout<<"The fixtures have been stored in "<<outputFilename<<endl;
+
+}
     //To prevent invalid matchups where only one team is available
     if(numTeams%2 !=0) {
         fixtures.push_back({"N/A",teams.back().name,"N/A","N/A",0,weekend});
