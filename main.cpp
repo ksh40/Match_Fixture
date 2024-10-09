@@ -46,7 +46,9 @@ int main{
     for (const auto& team : teams) {
         cout << "Team: " << team.name << ", Town: " << team.town<<", Stadium: " << team.stadium << endl;
     }
-
-
+// Generating fixtures then displaying it to the user
+    vector<Match>fixtures;
+    generateFixture(teams, fixtures);
+    displayFixtures(fixtures);
 
     return 0;
