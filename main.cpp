@@ -106,4 +106,3 @@ int main() {
     displayFixtures(fixtures);
 
     return 0;
-}
