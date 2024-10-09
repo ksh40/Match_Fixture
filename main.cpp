@@ -5,7 +5,34 @@
 #include <string>
 using namespace std;
 
+// To enable it to access and view the teams info
+vector<Team> readCSV(const string& filename) {
+    vector<Team> teams;
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cout << "File not found" << endl;
+        return teams;
+    }
 
+    string line;
+    getline(file, line);  // Skip header
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string name, town, stadium;
+
+        getline(ss, name, ',');
+        getline(ss, town, ',');
+        getline(ss, stadium, ',');
+        if(name.empty()||town.empty()||stadium.empty()) {
+            cout<<"Unavailable info"<<line<<endl;
+            continue;
+        }
+        teams.push_back({name, town, stadium});
+    }
+
+    file.close();
+    return teams;
+}
 //Generate the fixtures for the teams in the league
 void generateFixture(const vector<Team>& teams, vector<Match>& fixtures) {
     int weekend = 1;
