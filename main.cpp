@@ -54,6 +54,7 @@ void displayFixtures(const vector<Match>& fixtures, const string& outputFilename
 }
 int main{
     string filename = "main.csv";
+string outputFile="Fixtures.txt";
 
     // Read teams from the CSV file
     vector<Team> teams = readCSV(filename);
